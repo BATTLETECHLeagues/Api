@@ -51,6 +51,7 @@
     <Compile Include="Domain\System\RequestSystemDetailsInteractorFixture.cs" />
     <Compile Include="Domain\User\AddUserInteractorFixture.cs" />
     <Compile Include="Infrastructure\Database\CreateDatabaseFixture.cs" />
+    <Compile Include="Infrastructure\Database\DatabaseFixtureBase.cs" />
     <Compile Include="Infrastructure\Database\DatabaseInit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestCategories.cs" />
