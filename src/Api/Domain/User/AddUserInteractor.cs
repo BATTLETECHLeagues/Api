@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Api.Domain.User
+﻿namespace Api.Domain.User
 {
     public class AddUserInteractor
     {
+        public void Execute()
+        {
+            
+        }
+
+        public class AddUserRequest
+        {
+            public string UserName { get; set; }
+        }
     }
 }

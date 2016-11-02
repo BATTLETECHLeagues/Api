@@ -14,8 +14,6 @@ namespace Api.Test.Infrastructure.Database
             {
                 connection.Open();
 
-
-
                 var dataDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "Local", "BCPAPI","Data");
 
                 if (!Directory.Exists(dataDirectory))
@@ -46,9 +44,8 @@ namespace Api.Test.Infrastructure.Database
                 connection.Open();
 
                 var sql = $@"
-               IF EXISTS(select * from sys.databases where name={databaseName})
-                DROP DATABASE Test2
-                ";
+                    IF EXISTS(select * from sys.databases where name={databaseName})
+                    DROP DATABASE Test2";
 
                 var command = new SqlCommand(sql, connection);
                 command.ExecuteNonQuery();
@@ -71,10 +68,7 @@ namespace Api.Test.Infrastructure.Database
                     return true;
             }
 
-
             return false;
-
-
         }
     }
 }
