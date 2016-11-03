@@ -1,32 +1,10 @@
-﻿using Api.Domain;
+using Api.Domain.User;
+using Api.Infrastructure.Database;
+using Api.Test.Infrastructure.Database;
 using NUnit.Framework;
 
 namespace Api.Test.Domain
 {
-    public class FakeRepository : IRepository
-    {
-        public object InsertedItem { get; set; }
-        public void Insert<T>(T item)
-        {
-            InsertedItem = item;
-        }
-
-        public void Remove<T>(T item)
-        {
-            throw new global::System.NotImplementedException();
-        }
-
-        public void Update<T>(T item)
-        {
-            throw new global::System.NotImplementedException();
-        }
-
-        public T FindById<T>(int id)
-        {
-            throw new global::System.NotImplementedException();
-        }
-    }
-
     [TestFixture]
     public class AddUserInteractorFixture
     {

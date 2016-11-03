@@ -45,7 +45,7 @@ namespace Api.Test.Infrastructure.Database
 
                 var sql = $@"
                     IF EXISTS(select * from sys.databases where name={databaseName})
-                    DROP DATABASE Test2";
+                    DROP DATABASE {databaseName}";
 
                 var command = new SqlCommand(sql, connection);
                 command.ExecuteNonQuery();
@@ -59,7 +59,7 @@ namespace Api.Test.Infrastructure.Database
             {
                 connection.Open();
 
-                var sql = $@"select * from sys.databases where name={databaseName}";
+                var sql = $@"select * from sys.databases where name='{databaseName}'";
 
                 var command = new SqlCommand(sql, connection);
                 var result = command.ExecuteReader();
