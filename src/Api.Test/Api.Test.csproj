@@ -51,6 +51,7 @@
     <Compile Include="Domain\System\RequestSystemDetailsInteractorFixture.cs" />
     <Compile Include="Domain\User\AddUserInteractorFixture.cs" />
     <Compile Include="Infrastructure\Database\CreateDatabaseFixture.cs" />
+    <Compile Include="Infrastructure\Database\DapperRepositoryFixture.cs" />
     <Compile Include="Infrastructure\Database\DatabaseFixtureBase.cs" />
     <Compile Include="Infrastructure\Database\DatabaseInit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,7 +60,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Api\Api.csproj">
+      <Project>{A23DFD64-22C8-4C3E-AFB0-83AD35026956}</Project>
+      <Name>Api</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

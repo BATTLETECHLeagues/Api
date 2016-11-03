@@ -6,10 +6,12 @@ namespace Api.Test.Infrastructure.Database
     class DatabaseFixtureBase
     {
         
+        
         [SetUp]
         public void Setup()
         {
-            
+            if (!DatabaseInit.DatabaseExists("BCAPIDatabase_Dev"))
+                DatabaseInit.CreateDatabase("BCAPIDatabase_Dev");
         }
 
         [TearDown]
