@@ -1,9 +1,7 @@
 ﻿using Api.Domain;
-using Api.Domain.User;
-using Api.Infrastructure.Database;
 using NUnit.Framework;
 
-namespace Api.Test.Domain.User
+namespace Api.Test.Domain
 {
     public class FakeRepository : IRepository
     {
@@ -39,9 +37,9 @@ namespace Api.Test.Domain.User
             var interactor = new AddUserInteractor(repository);
             interactor.Execute();
 
-            Assert.IsInstanceOf<Api.Domain.User.User>(repository.InsertedItem);
-            Assert.That(((Api.Domain.User.User)repository.InsertedItem).UserName,Is.EqualTo("UserName"));
-            Assert.That(((Api.Domain.User.User)repository.InsertedItem).Id, Is.EqualTo(0));
+            Assert.IsInstanceOf<User>(repository.InsertedItem);
+            Assert.That(((User)repository.InsertedItem).UserName,Is.EqualTo("UserName"));
+            Assert.That(((User)repository.InsertedItem).Id, Is.EqualTo(0));
         }
 
         [Test]

@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Domain\System\RequestSystemDetailsInteractorFixture.cs" />
-    <Compile Include="Domain\User\AddUserInteractorFixture.cs" />
+    <Compile Include="Domain\System\AddUserInteractorFixture.cs" />
     <Compile Include="Infrastructure\Database\CreateDatabaseFixture.cs" />
     <Compile Include="Infrastructure\Database\DapperRepositoryFixture.cs" />
     <Compile Include="Infrastructure\Database\DatabaseFixtureBase.cs" />

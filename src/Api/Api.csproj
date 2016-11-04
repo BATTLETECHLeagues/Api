@@ -100,7 +100,13 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\System\SystemDetailsController.cs" />
-    <Compile Include="Domain\User\AddUserInteractor.cs" />
+    <Compile Include="Controllers\User\UserController.cs" />
+    <Compile Include="Domain\Matches\Match.cs" />
+    <Compile Include="Domain\MatchTypes\MatchType.cs" />
+    <Compile Include="Domain\Matches\Round.cs" />
+    <Compile Include="Domain\System\AddUserInteractor.cs" />
+    <Compile Include="Domain\System\User.cs" />
+    <Compile Include="Domain\System\UserLoginInteractor.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -120,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Domain\System\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

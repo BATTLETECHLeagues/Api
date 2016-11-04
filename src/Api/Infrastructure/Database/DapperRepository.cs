@@ -1,7 +1,7 @@
 ﻿using System;
 using Api.Domain;
 
-namespace Api.Infrastructure.Database
+namespace Api.Infrastructure
 {
     public class DapperRepository : IRepository
     {

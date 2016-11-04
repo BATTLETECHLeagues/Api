@@ -1,6 +1,4 @@
-﻿using Api.Infrastructure.Database;
-
-namespace Api.Domain.User
+﻿namespace Api.Domain
 {
     public class AddUserInteractor
     {
@@ -24,11 +22,5 @@ namespace Api.Domain.User
         {
             public string UserName { get; set; }
         }
-    }
-
-    public class User
-    {
-        public int Id { get; set; }
-        public string UserName { get; set; }
     }
 }

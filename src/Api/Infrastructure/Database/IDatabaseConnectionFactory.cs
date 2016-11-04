@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Api.Infrastructure.Database
+namespace Api.Infrastructure
 {
     public interface IDatabaseConnectionFactory
     {
