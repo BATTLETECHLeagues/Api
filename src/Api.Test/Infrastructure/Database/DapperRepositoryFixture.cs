@@ -1,10 +1,9 @@
-﻿using System;
-using System.Data.SqlClient;
-using Api.Domain.User;
-using Api.Infrastructure.Database;
+﻿using Api.Domain;
+using Api.Infrastructure;
+using Api.Test.Infrastructure.Database;
 using NUnit.Framework;
 
-namespace Api.Test.Infrastructure.Database
+namespace Api.Test.Infrastructure
 {
     [TestFixture]
     public class DapperRepositoryFixture : DatabaseFixtureBase
@@ -15,11 +14,7 @@ namespace Api.Test.Infrastructure.Database
             var dapperRepository = new DapperRepository();
 
             var id = dapperRepository.Insert(new User {UserName = "Name"});
-
-
-
             
-
         }
     }
 }
