@@ -10,6 +10,7 @@ namespace Api
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.DependencyResolver = CastleHelper.GetDependencyResolver();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
