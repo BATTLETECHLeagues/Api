@@ -115,6 +115,7 @@
     <Compile Include="Domain\System\AddUserInteractor.cs" />
     <Compile Include="Domain\System\User.cs" />
     <Compile Include="Domain\System\UserLoginInteractor.cs" />
+    <Compile Include="Domain\System\UserSearchQuery.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

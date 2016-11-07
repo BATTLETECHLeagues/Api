@@ -11,20 +11,59 @@ namespace Api.Test.Domain
         public void AddUser_AddsUser_WhenNewUser()
         {
             var repository = new FakeRepository();
-            var interactor = new AddUserInteractor(repository);
-            interactor.Execute();
+            FindUserQuery fnq = FakeFindUserQuery.NoUserFound();
+            var interactor = GetAddUserInteractor(repository, fnq);
+            interactor.Execute("UserName");
 
             Assert.IsInstanceOf<User>(repository.InsertedItem);
             Assert.That(((User)repository.InsertedItem).UserName,Is.EqualTo("UserName"));
-            Assert.That(((User)repository.InsertedItem).Id, Is.EqualTo(0));
+            Assert.That(((User)repository.InsertedItem).Id, Is.EqualTo(1));
         }
 
         [Test]
-        [Ignore("TODO")]
-        public void AddUser_DoesNotAddUser_WhenUserExists40()
+        public void AddUser_DoesNotAddUser_WhenUserExists()
         {
+            var repository = new FakeRepository();
+            FindUserQuery fnq = FakeFindUserQuery.UserFound(new User {UserName = "UserToFind",Id = 1});
 
+            var interactor = GetAddUserInteractor(repository, fnq);
+            interactor.Execute("UserName");
+
+            Assert.That(repository.InsertedItem, Is.Null);
         }
 
+        private static AddUserInteractor GetAddUserInteractor(FakeRepository repository, FindUserQuery findUserQuery)
+        {
+            var interactor = new AddUserInteractor(repository,findUserQuery);
+            return interactor;
+        }
+
+
+    }
+
+    public class FakeFindUserQuery : FindUserQuery
+    {
+        private FakeFindUserQuery()
+        {
+            
+        }
+
+        private User UserToReturn { get; set; }
+
+        public static FakeFindUserQuery NoUserFound()
+        {
+            return new FakeFindUserQuery();
+        }
+
+        public static FakeFindUserQuery UserFound(User userToReturn)
+        {
+            return new FakeFindUserQuery {UserToReturn = userToReturn};
+        }
+
+
+        public User Execute(string userName)
+        {
+            return UserToReturn;
+        }
     }
 }
