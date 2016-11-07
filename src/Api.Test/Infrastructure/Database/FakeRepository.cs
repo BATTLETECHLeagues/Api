@@ -21,7 +21,7 @@ namespace Api.Test.Infrastructure.Database
             throw new global::System.NotImplementedException();
         }
 
-        public T FindById<T>(int id)
+        public T FindById<T>(int id) where T : class
         {
             throw new global::System.NotImplementedException();
         }

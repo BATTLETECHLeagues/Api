@@ -34,9 +34,20 @@ namespace Api.Infrastructure
             throw new NotImplementedException();
         }
 
-        public T FindById<T>(int id)
+        public T FindById<T>(int id) where T : class
         {
-            throw new NotImplementedException();
+            T item;
+            using (IDbConnection sqlConnection
+             = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Database=BCAPIDatabase_Dev;Trusted_Connection=True;"))
+            {
+                sqlConnection.Open();
+
+                item = sqlConnection.Get<T>(id);
+
+                sqlConnection.Close();
+
+            }
+            return item;
         }
     }
 }
