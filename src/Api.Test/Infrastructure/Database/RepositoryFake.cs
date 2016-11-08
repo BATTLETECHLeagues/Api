@@ -2,7 +2,7 @@
 
 namespace Api.Test.Infrastructure.Database
 {
-    public class FakeRepository : IRepository
+    public class RepositoryFake : IRepository
     {
         public object InsertedItem { get; set; }
         public long Insert<T>(T item) where T : class

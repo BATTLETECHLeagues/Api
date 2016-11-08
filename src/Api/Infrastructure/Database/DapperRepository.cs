@@ -8,20 +8,21 @@ namespace Api.Infrastructure
 {
     public class DapperRepository : IRepository
     {
-        private long supplierId;
         public long Insert<T>(T item) where T : class
         {
+            long id;
+       
             using (IDbConnection sqlConnection
              = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Database=BCAPIDatabase_Dev;Trusted_Connection=True;"))
             {
                 sqlConnection.Open();
 
-                supplierId = sqlConnection.Insert(item);
+                id = sqlConnection.Insert(item);
 
                 sqlConnection.Close();
 
             }
-            return supplierId;
+            return id;
         }
 
         public void Remove<T>(T item)

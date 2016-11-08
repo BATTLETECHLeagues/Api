@@ -10,8 +10,8 @@ namespace Api.Test.Domain
         [Test]
         public void AddUser_AddsUser_WhenNewUser()
         {
-            var repository = new FakeRepository();
-            FindUserQuery fnq = FakeFindUserQuery.NoUserFound();
+            var repository = new RepositoryFake();
+            FindUserQuery fnq = FakeFindUserFake.NoUserFound();
             var interactor = GetAddUserInteractor(repository, fnq);
             interactor.Execute("UserName");
 
@@ -23,8 +23,8 @@ namespace Api.Test.Domain
         [Test]
         public void AddUser_DoesNotAddUser_WhenUserExists()
         {
-            var repository = new FakeRepository();
-            FindUserQuery fnq = FakeFindUserQuery.UserFound(new User {UserName = "UserToFind",Id = 1});
+            var repository = new RepositoryFake();
+            FindUserQuery fnq = FakeFindUserFake.UserFound(new User {UserName = "UserToFind",Id = 1});
 
             var interactor = GetAddUserInteractor(repository, fnq);
             interactor.Execute("UserName");
@@ -32,7 +32,7 @@ namespace Api.Test.Domain
             Assert.That(repository.InsertedItem, Is.Null);
         }
 
-        private static AddUserInteractor GetAddUserInteractor(FakeRepository repository, FindUserQuery findUserQuery)
+        private static AddUserInteractor GetAddUserInteractor(RepositoryFake repository, FindUserQuery findUserQuery)
         {
             var interactor = new AddUserInteractor(repository,findUserQuery);
             return interactor;
@@ -41,23 +41,23 @@ namespace Api.Test.Domain
 
     }
 
-    public class FakeFindUserQuery : FindUserQuery
+    public class FakeFindUserFake : FindUserQuery
     {
-        private FakeFindUserQuery()
+        private FakeFindUserFake()
         {
             
         }
 
         private User UserToReturn { get; set; }
 
-        public static FakeFindUserQuery NoUserFound()
+        public static FakeFindUserFake NoUserFound()
         {
-            return new FakeFindUserQuery();
+            return new FakeFindUserFake();
         }
 
-        public static FakeFindUserQuery UserFound(User userToReturn)
+        public static FakeFindUserFake UserFound(User userToReturn)
         {
-            return new FakeFindUserQuery {UserToReturn = userToReturn};
+            return new FakeFindUserFake {UserToReturn = userToReturn};
         }
 
 

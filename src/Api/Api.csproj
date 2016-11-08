@@ -123,6 +123,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Database\DapperRepository.cs" />
+    <Compile Include="Infrastructure\Database\FindUserQueryDapper.cs" />
     <Compile Include="Infrastructure\Database\IDatabaseConnectionFactory.cs" />
     <Compile Include="Domain\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
