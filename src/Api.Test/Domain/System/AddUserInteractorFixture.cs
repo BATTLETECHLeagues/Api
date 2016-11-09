@@ -1,4 +1,5 @@
 using Api.Domain;
+using Api.Test.Infrastructure;
 using Api.Test.Infrastructure.Database;
 using NUnit.Framework;
 

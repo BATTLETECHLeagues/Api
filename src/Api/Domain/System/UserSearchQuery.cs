@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Api.Domain
+﻿namespace Api.Domain
 {
     public interface FindUserQuery
     {
