@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Api.Test.Infrastructure.Database
+namespace Api.Test.Infrastructure
 {
     
     [TestFixture]

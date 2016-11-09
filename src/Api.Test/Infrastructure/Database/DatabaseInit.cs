@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.IO;
-using NUnit.Framework;
 
-namespace Api.Test.Infrastructure.Database
+namespace Api.Test.Infrastructure
 {
     public class DatabaseInit
     {

@@ -1,6 +1,6 @@
 ﻿using Api.Domain;
 
-namespace Api.Test.Infrastructure
+namespace Api.Test
 {
     public class RepositoryFake : IRepository
     {
