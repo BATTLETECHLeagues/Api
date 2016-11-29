@@ -3,12 +3,12 @@ using System.Web.Http;
 
 namespace Api.Controllers.System
 {
-    public class ValuesController : ApiController
+    public class SystemDetailsController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public SystemDetailsResponse Get()
         {
-            return new string[] { "value1", "value2" };
+            return new SystemDetailsResponse {Version = new Version {Minor = 1} };
         }
 
         // GET api/<controller>/5

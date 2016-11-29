@@ -109,6 +109,7 @@
     <Compile Include="App_Start\Castle.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\System\SystemDetailsController.cs" />
+    <Compile Include="Controllers\System\SystemDetailsResponse.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Domain\DomainInstaller.cs" />
     <Compile Include="Domain\Matches\Match.cs" />
