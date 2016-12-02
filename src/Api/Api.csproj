@@ -119,7 +119,7 @@
     <Compile Include="Domain\System\RetrieveUserInteractor.cs" />
     <Compile Include="Domain\System\User.cs" />
     <Compile Include="Domain\System\UserLoginInteractor.cs" />
-    <Compile Include="Domain\System\UserSearchQuery.cs" />
+    <Compile Include="Domain\System\FindUserQuery.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

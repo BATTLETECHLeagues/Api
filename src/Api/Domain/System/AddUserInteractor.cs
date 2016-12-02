@@ -15,7 +15,6 @@
             if (_findUserQuery.Execute(userName) != null)
                 return;
             
-
             var user = new User
             {
                 UserName = userName

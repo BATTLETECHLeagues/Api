@@ -3,17 +3,26 @@ using Api.Domain;
 
 namespace Api.Controllers
 {
+    public class UserAccount
+    {
+        public string userName { get; set; }
+
+    }
+
     public class UserController : ApiController
     {
+        private readonly AddUserInteractor _addUserInteractor;
         private readonly RetrieveUserInteractor _retrieveUserInteractor;
         // POST api/<controller>
-        public UserController(RetrieveUserInteractor retrieveUserInteractor)
+        public UserController(RetrieveUserInteractor retrieveUserInteractor, AddUserInteractor addUserInteractor)
         {
             _retrieveUserInteractor = retrieveUserInteractor;
+            _addUserInteractor = addUserInteractor;
         }
 
-        public void Post([FromBody]string value)
+        public void Post([FromBody]UserAccount account)
         {
+            _addUserInteractor.Execute(account.userName);
         }
 
         // GET api/<controller>/5

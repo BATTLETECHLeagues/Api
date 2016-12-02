@@ -18,7 +18,7 @@ namespace Api.Infrastructure
             {
                 sqlConnection.Open();
 
-                users = sqlConnection.Query<User>($"Select * from Users where UserName={userName}").ToList();
+                users = sqlConnection.Query<User>($"Select * from Users where UserName='{userName}'").ToList();
 
                 sqlConnection.Close();
             }
