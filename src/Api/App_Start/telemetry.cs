@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Http.ExceptionHandling;
 using Api;
-using Microsoft.ApplicationInsights;
+
 
 namespace Api
 {
@@ -9,12 +9,6 @@ namespace Api
     {
         public override void Log(ExceptionLoggerContext context)
         {
-            if (context != null && context.Exception != null)
-            {
-                // Note: A single instance of telemetry client is sufficient to track multiple telemetry items.
-                var ai = new TelemetryClient();
-                ai.TrackException(context.Exception);
-            }
             base.Log(context);
         }
     }

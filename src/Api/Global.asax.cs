@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using NLog;
+using System.Web.Http;
 
 namespace Api
 {
@@ -7,6 +8,10 @@ namespace Api
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            var logger = LogManager.GetLogger("Global Logger");
+
+            logger.Info("Application Has Started");
         }
     }
 }
