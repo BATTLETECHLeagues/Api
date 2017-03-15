@@ -3,6 +3,7 @@ using NLog;
 using System.Web.Http;
 using Microsoft.ApplicationInsights.NLogTarget;
 using NLog.Config;
+using Microsoft.ApplicationInsights;
 
 namespace Api
 {
@@ -12,19 +13,15 @@ namespace Api
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
-            var config = new LoggingConfiguration();
-            ConfigurationItemFactory.Default.Targets.RegisterDefinition(
-                "ai",
-                typeof(ApplicationInsightsTarget)
-            );
+  
             ApplicationInsightsTarget aiTarget = new ApplicationInsightsTarget();
             aiTarget.InstrumentationKey = ConfigurationManager.AppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"];
             aiTarget.Name = "ai";
-            config.AddTarget("ai", aiTarget);
-            LogManager.Configuration = config;
+            LogManager.Configuration.AddTarget(aiTarget);
 
             var logger = LogManager.GetLogger("Global Logger");
-
+            TelemetryClient telemetry = new TelemetryClient();
+            telemetry.TrackEvent("WinGame");
             logger.Info("Application Has Started");
         }
     }
