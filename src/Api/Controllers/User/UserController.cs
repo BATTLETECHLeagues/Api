@@ -35,7 +35,7 @@ namespace Api.Controllers
             catch  (Exception ex)
             {
                 TelemetryClient telemetry = new TelemetryClient();
-                telemetry.TrackEvent("WinGame");
+                telemetry.TrackEvent(ex.ToString());
 
             }
                 
