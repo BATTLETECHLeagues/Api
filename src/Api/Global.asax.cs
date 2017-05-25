@@ -13,6 +13,8 @@ namespace Api
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
+
+
   
             ApplicationInsightsTarget aiTarget = new ApplicationInsightsTarget();
             aiTarget.InstrumentationKey = ConfigurationManager.AppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"];
