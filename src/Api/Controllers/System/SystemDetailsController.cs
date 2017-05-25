@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Configuration;
+using NLog;
 using System.Web.Http;
+using Microsoft.ApplicationInsights.NLogTarget;
+using Microsoft.ApplicationInsights;
+using NLog.Config;
 
 namespace Api.Controllers.System
 {
@@ -8,6 +12,12 @@ namespace Api.Controllers.System
         // GET api/<controller>
         public SystemDetailsResponse Get()
         {
+            var logger = LogManager.GetLogger("Global Logger");
+            TelemetryClient telemetry = new TelemetryClient();
+            telemetry.TrackEvent("WinGame");
+            logger.Error("Application Has Started");
+
+
             return new SystemDetailsResponse {Version = new Version {Minor = 1} };
         }
 

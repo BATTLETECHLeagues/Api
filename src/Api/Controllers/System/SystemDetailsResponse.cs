@@ -1,7 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
+using NLog;
+using System.Web.Http;
+using Microsoft.ApplicationInsights.NLogTarget;
+using Microsoft.ApplicationInsights;
+using NLog.Config;
 
 namespace Api.Controllers.System
 {
