@@ -1,4 +1,10 @@
-﻿using System.Web.Http;
+﻿using System.Configuration;
+using NLog;
+using System.Web.Http;
+using Microsoft.ApplicationInsights.NLogTarget;
+using Microsoft.ApplicationInsights;
+using NLog.Config;
+using System;
 using Api.Domain;
 
 namespace Api.Controllers
@@ -22,7 +28,17 @@ namespace Api.Controllers
 
         public void Post([FromBody]UserAccount account)
         {
-            _addUserInteractor.Execute(account.userName);
+            try
+            {
+                _addUserInteractor.Execute(account.userName);
+            }
+            catch  (Exception ex)
+            {
+                TelemetryClient telemetry = new TelemetryClient();
+                telemetry.TrackEvent("WinGame");
+
+            }
+                
         }
 
         // GET api/<controller>/5
