@@ -14,7 +14,8 @@ namespace Api.Infrastructure
         {
             List<User> users;
 
-            using (IDbConnection sqlConnection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Database=BCAPIDatabase_Dev;Trusted_Connection=True;"))
+            var connectionstring = ConfigurationManager.ConnectionStrings["BCDB"];
+            using (IDbConnection sqlConnection = new SqlConnection(connectionstring.ConnectionString))
             {
                 sqlConnection.Open();
 
