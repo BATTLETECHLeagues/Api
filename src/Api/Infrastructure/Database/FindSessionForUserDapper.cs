@@ -1,32 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Linq;
 using Api.Domain;
 using Dapper;
 
 namespace Api.Infrastructure
 {
-    public class FindUserQueryDapper : FindUserQuery
+
+
+    public class FindSessionForUserDapper : FindSessionForUser
     {
-        public User Execute(string userName)
+        public UserSession Execute(string sessionKey)
         {
-            List<User> users;
+            List<UserSession> users;
 
             var connectionstring = ConfigurationManager.ConnectionStrings["BCDB"];
             using (IDbConnection sqlConnection = new SqlConnection(connectionstring.ConnectionString))
             {
                 sqlConnection.Open();
 
-                users = sqlConnection.Query<User>($"Select * from Users where UserName='{userName}'").ToList();
+                users = sqlConnection.Query<UserSession>($"Select * from UserSessions where SessionKey='{sessionKey}'").ToList();
 
                 sqlConnection.Close();
             }
 
             return users.Count != 1 ? null : users.First();
         }
+
     }
 }
-

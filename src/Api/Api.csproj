@@ -175,14 +175,18 @@
     <Compile Include="Domain\MatchTypes\MatchType.cs" />
     <Compile Include="Domain\Matches\Round.cs" />
     <Compile Include="Domain\System\AddUserInteractor.cs" />
+    <Compile Include="Domain\System\FindSessionForUser.cs" />
     <Compile Include="Domain\System\RetrieveUserInteractor.cs" />
     <Compile Include="Domain\System\User.cs" />
     <Compile Include="Domain\System\UserLoginInteractor.cs" />
     <Compile Include="Domain\System\FindUserQuery.cs" />
+    <Compile Include="Domain\System\UserSession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Infrastructure\Database\DapperRepository.cs" />
+    <Compile Include="Infrastructure\Database\FindSessionForUserDapper.cs" />
     <Compile Include="Infrastructure\Database\FindUserQueryDapper.cs" />
     <Compile Include="Infrastructure\Database\IDatabaseConnectionFactory.cs" />
     <Compile Include="Domain\IRepository.cs" />

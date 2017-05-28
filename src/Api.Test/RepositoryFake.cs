@@ -1,13 +1,19 @@
-﻿using Api.Domain;
+﻿using System.Collections.Generic;
+using Api.Domain;
 
 namespace Api.Test
 {
     public class RepositoryFake : IRepository
     {
-        public object InsertedItem { get; set; }
+        public RepositoryFake()
+        {
+            InsertedItem = new List<object>();
+        }
+
+        public List<object> InsertedItem { get; set; }
         public long Insert<T>(T item) where T : class
         {
-            InsertedItem = item;
+            InsertedItem.Add(item);
             return 1;
         }
 

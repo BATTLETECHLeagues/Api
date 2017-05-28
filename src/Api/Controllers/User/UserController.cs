@@ -1,9 +1,5 @@
-﻿using System.Configuration;
-using NLog;
-using System.Web.Http;
-using Microsoft.ApplicationInsights.NLogTarget;
+﻿using System.Web.Http;
 using Microsoft.ApplicationInsights;
-using NLog.Config;
 using System;
 using Api.Domain;
 
@@ -26,19 +22,23 @@ namespace Api.Controllers
             _addUserInteractor = addUserInteractor;
         }
 
-        public void Post([FromBody]UserAccount account)
+        public AddUserInteractor.AddUserResponse Post([FromBody]UserAccount account)
         {
+            AddUserInteractor.AddUserResponse result = null;
             try
             {
-                _addUserInteractor.Execute(account.userName);
+                result = _addUserInteractor.Execute(account.userName);
+
+                //once user has been added log them in.
             }
             catch  (Exception ex)
             {
                 TelemetryClient telemetry = new TelemetryClient();
                 telemetry.TrackEvent(ex.ToString());
-
             }
-                
+
+            return result;
+
         }
 
         // GET api/<controller>/5

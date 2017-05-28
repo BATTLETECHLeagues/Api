@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Api.Domain;
 using NUnit.Framework;
 
@@ -12,11 +13,19 @@ namespace Api.Test.Domain
             var repository = new RepositoryFake();
             FindUserQuery fnq = FakeFindUserFake.NoUserFound();
             var interactor = GetAddUserInteractor(repository, fnq);
-            interactor.Execute("UserName");
+            var result = interactor.Execute("UserName");
 
-            Assert.IsInstanceOf<User>(repository.InsertedItem);
-            Assert.That(((User)repository.InsertedItem).UserName,Is.EqualTo("UserName"));
-            Assert.That(((User)repository.InsertedItem).Id, Is.EqualTo(1));
+            Assert.That(result.OperationSuccess, Is.True);
+            Assert.That(result.OperationSuccess, Is.True);
+            Assert.That(result.SessionKey, Is.EqualTo(((UserSession)repository.InsertedItem[1]).SessionKey));
+
+            Assert.IsInstanceOf<User>(repository.InsertedItem[0]);
+            Assert.That(((User)repository.InsertedItem[0]).UserName,Is.EqualTo("UserName"));
+            Assert.That(((User)repository.InsertedItem[0]).Id, Is.EqualTo(1));
+
+            Assert.IsInstanceOf<UserSession>(repository.InsertedItem[1]);
+            Assert.True(Regex.Match(((UserSession)repository.InsertedItem[1]).SessionKey, "^[{(]?[0-9A-F]{8}[-]?([0-9A-F]{4}[-]?){3}[0-9A-F]{12}[)}]?$", RegexOptions.IgnoreCase).Success);
+            Assert.That(((UserSession)repository.InsertedItem[1]).Id, Is.EqualTo(1));
         }
 
         [Test]
@@ -26,9 +35,11 @@ namespace Api.Test.Domain
             FindUserQuery fnq = FakeFindUserFake.UserFound(new User {UserName = "UserToFind",Id = 1});
 
             var interactor = GetAddUserInteractor(repository, fnq);
-            interactor.Execute("UserName");
+            var result = interactor.Execute("UserName");
 
-            Assert.That(repository.InsertedItem, Is.Null);
+            Assert.That(result.OperationSuccess, Is.False);
+            Assert.That(string.IsNullOrEmpty(result.SessionKey), Is.True);
+            Assert.That(repository.InsertedItem.Count, Is.EqualTo(0));
         }
 
         private static AddUserInteractor GetAddUserInteractor(RepositoryFake repository, FindUserQuery findUserQuery)
