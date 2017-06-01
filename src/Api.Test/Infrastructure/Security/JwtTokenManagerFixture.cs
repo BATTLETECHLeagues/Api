@@ -11,7 +11,8 @@ namespace Api.Test.Infrastructure.Security
         public void JwtManager_GeneratesToken()
         {
             JwtTokenManager tokenManager = new JwtTokenManager();
-            var token = tokenManager.GenerateToken("sd");
+            var username = "UserName";
+            var token = tokenManager.GenerateToken(username);
 
 
             var simplePrinciple = tokenManager.GetPrincipal(token);
@@ -19,6 +20,7 @@ namespace Api.Test.Infrastructure.Security
 
 
             Assert.That(token, Is.Not.Null);
+            Assert.That(identity.Name, Is.EqualTo(username));
 
         }
     }

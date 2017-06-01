@@ -14,13 +14,15 @@ namespace Api.Controllers.Security
         }
         public LoginResponse Post([FromBody] LoginRequest account)
         {
-            return new LoginResponse();   
+            var token = _userLoginInteractor.Execute(account.userName);
+            return new LoginResponse {Token = token};   
         }
     }
 
 
     public class LoginResponse
     {
+        public string Token { get; set; }
     }
 
     public class LoginRequest
