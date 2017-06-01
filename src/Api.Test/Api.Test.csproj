@@ -116,6 +116,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Domain\System\RequestSystemDetailsInteractorFixture.cs" />
     <Compile Include="Domain\System\AddUserInteractorFixture.cs" />
+    <Compile Include="Domain\System\UserLoginInteractorFixture.cs" />
     <Compile Include="Domain\System\UserSessionFixture.cs" />
     <Compile Include="ExclusiveyUsesAttribute.cs" />
     <Compile Include="Infrastructure\Database\CreateDatabaseFixture.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Infrastructure\Database\DatabaseInit.cs" />
     <Compile Include="Infrastructure\Database\FindUserSessionQueryDapperFixture.cs" />
     <Compile Include="Infrastructure\Database\FindUserQueryDapperFixture.cs" />
+    <Compile Include="Infrastructure\Security\JwtTokenManagerFixture.cs" />
     <Compile Include="RepositoryFake.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestCategories.cs" />
